@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -28,9 +30,27 @@ namespace WpfApp1
             CanExecuteChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    public class MainViewModel
+    public class MainViewModel : INotifyPropertyChanged
     {
         public ICommand ClickCommand { get; }
+        private string _textBoxContent;
+        public string TextBoxContent
+        {
+            get => _textBoxContent;
+            set
+            {
+                _textBoxContent = value;
+                OnPropertyChanged();
+                // 通知命令状态更新
+                (ClickCommand as RelayCommand)?.RaiseCanExecuteChanged();
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
 
         public MainViewModel()
         {
@@ -46,8 +66,7 @@ namespace WpfApp1
 
         private bool CanExecuteClick(object parameter)
         {
-            // 决定命令是否可以执行
-            return true; // 返回 false 时，按钮会被禁用
+            return string.IsNullOrEmpty(TextBoxContent) == false;
         }
     }
 

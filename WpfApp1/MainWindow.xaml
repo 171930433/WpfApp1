@@ -17,8 +17,13 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
         <Button Content="_Save" Grid.Row="0" Click="Button_Click1"></Button>
-        <Button Content="btn2" Grid.Row="1" Command="{Binding ClickCommand}" CommandParameter="2"></Button>
+        <Button Content="btn2" Grid.Row="1" Command="{Binding ClickCommand}"  CommandParameter="2"></Button>
+        <TextBox Text="{Binding TextBoxContent, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" Grid.Column="1" ></TextBox >
     </Grid>
 </Window>
