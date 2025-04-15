@@ -25,5 +25,6 @@
         <Button Content="_Save" Grid.Row="0" Click="Button_Click1"></Button>
         <Button Content="btn2" Grid.Row="1" Command="{Binding ClickCommand}"  CommandParameter="2"></Button>
         <TextBox Text="{Binding TextBoxContent, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" Grid.Column="1" ></TextBox >
+        <local:MyUserControl Grid.Row="0" Grid.Column="1"></local:MyUserControl>
     </Grid>
 </Window>

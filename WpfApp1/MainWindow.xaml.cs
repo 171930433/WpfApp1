@@ -27,5 +27,10 @@ namespace WpfApp1
             MessageBox.Show("btn1 clicked");
 
         }
+
+        private void Button_Click3(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("btn3 clicked");
+        }
     }
 }
