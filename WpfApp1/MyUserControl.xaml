@@ -10,7 +10,7 @@
         <KeyBinding Key="F3" Command="{Binding ClickCommand2}" CommandParameter="1"/>
     </UserControl.InputBindings>
     <Grid>
-        <Button Command="{Binding ClickCommand2}">
+        <Button Click="Button_Click1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
